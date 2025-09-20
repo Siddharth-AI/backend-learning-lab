@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 async function connectToMongoDB() {
   try {
     // Connect to MongoDB using the connection string
-    await mongoose.connect('mongodb+srv://sidshah895:kqDKlz7gNOdhI3pr2025@cluster0.gleuiku.mongodb.net/')
+    await mongoose.connect(`${process.env.MONGO_URI}`)
     console.log('Connected to MongoDB');
   } catch (err) {
     console.error('Could not connect to MongoDB', err);
   }
 }
 
-// mongoose.connect('mongodb+srv://sidshah895:kqDKlz7gNOdhI3pr2025@cluster0.gleuiku.mongodb.net/').then(() => console.log('Connected to MongoDB')).catch(err => console.error('Could not connect to MongoDB', err));
+// mongoose.connect(`${process.env.MONGO_URI}`).then(() => console.log('Connected to MongoDB')).catch(err => console.error('Could not connect to MongoDB', err));
 
 // Define a schema for the user collection
 const userSchema = new mongoose.Schema({
