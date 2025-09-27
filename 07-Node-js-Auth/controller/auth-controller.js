@@ -9,7 +9,6 @@ const registration = async (req, res) => {
 
     // check if the user is already exists in our database;
     const checkExistingUser = await User.findOne({ $or: [{ username }, { email }] })
-    console.log(checkExistingUser, "checkExistingUser=>>>>>>>>>")
     if (checkExistingUser) {
       return res.status(400).json({
         success: false,
@@ -97,7 +96,6 @@ const login = async (req, res) => {
 
     // Create a copy of the user data without password
     const userData = user.toObject(); // Convert to plain JS object
-    console.log(userData)
     delete userData.password; // Remove password field
 
     // if everything is fine, return the user data

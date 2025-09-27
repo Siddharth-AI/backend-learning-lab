@@ -4,6 +4,7 @@ const connectToDB = require('./database/db');
 const authRoute = require('./routes/auth-routes');
 const homeRoute = require('./routes/home-routes');
 const adminRoute = require('./routes/admin-routes');
+const uploadImageRoute = require('./routes/image-routes');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -16,6 +17,7 @@ app.use(express.json())
 app.use('/api/auth', authRoute)
 app.use('/api/home-page', homeRoute)
 app.use('/api/admin-page', adminRoute)
+app.use('/api/image', uploadImageRoute)
 
 app.listen(PORT, (err) => {
   if (err) console.log('something occured server is not running: ', err)
